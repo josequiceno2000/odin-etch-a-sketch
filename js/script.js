@@ -1,15 +1,22 @@
 const container = document.querySelector("#container");
-let containerTotalWidth = container.offsetWidth;
 
-for (let i = 0; i < 16 ** 2; i++) {
-    let squareDiv = document.createElement("div");
-    squareDiv.style.width = "6.25%";
-    squareDiv.style.height = "6.25%";
-    squareDiv.style.backgroundColor = "lightblue";
-    squareDiv.style.border = "1px solid #ccc";
-    squareDiv.classList.add("squareDiv");
-    container.appendChild(squareDiv);
+function drawGrid(squaresPerSide) {
+    container.innerHTML = "";
+    const size = 100 / squaresPerSide;
+
+    for (let i = 0; i < squaresPerSide ** 2; i++) {
+        let squareDiv = document.createElement("div");
+
+        squareDiv.style.width = `${size}%`;
+        squareDiv.style.height = `${size}%`;
+
+        squareDiv.style.backgroundColor = "lightblue";
+        squareDiv.style.border = "1px solid #ccc";
+        squareDiv.classList.add("squareDiv");
+        container.appendChild(squareDiv);
+    }
 }
+
 
 container.addEventListener('mouseover', function(event) {
     if (event.target.classList.contains("squareDiv")) {
@@ -17,13 +24,19 @@ container.addEventListener('mouseover', function(event) {
     }
 });
 
+// Initial call to have the default 16x16 grid
+drawGrid(16);
+
 // Button logic
 const gridBtn = document.querySelector("#grid-size");
-let userSquares;
 gridBtn.addEventListener('click', () => {
-    userSquares = prompt(`How many squares per side on this grid?`, 50);
-    if (userSquares > 100) {
-        userSquares = 100;
-    }
+    let userSquares = prompt(`How many squares per side on this grid? (Max 100)`, 50);
     
-})
+    userSquares = parseInt(userSquares);
+
+    if (isNaN(userSquares) || userSquares < 1 || userSquares > 100) {
+        alert("Please enter a valid number between 1 and 100.");
+    } else  {
+        drawGrid(userSquares);
+    }
+});
