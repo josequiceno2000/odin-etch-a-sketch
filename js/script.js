@@ -20,7 +20,14 @@ function drawGrid(squaresPerSide) {
 
 container.addEventListener('mouseover', function(event) {
     if (event.target.classList.contains("squareDiv")) {
-        event.target.classList.add("hovered");
+        let maxVal = 0xFFFFFF;
+        let randomNumber = Math.floor(Math.random() * maxVal);
+        let randomColor = randomNumber.toString(16)
+        while (randomColor.length < 6) {
+            randomColor = "0" + randomColor;
+        }
+        console.log(randomColor);
+        event.target.backgroundColor = `${randomColor}`;
     }
 });
 
