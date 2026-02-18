@@ -15,5 +15,15 @@ container.addEventListener('mouseover', function(event) {
     if (event.target.classList.contains("squareDiv")) {
         event.target.classList.add("hovered");
     }
-    
 });
+
+// Button logic
+const gridBtn = document.querySelector("#grid-size");
+let userSquares;
+gridBtn.addEventListener('click', () => {
+    userSquares = prompt(`How many squares per side on this grid?`, 50);
+    if (userSquares > 100) {
+        userSquares = 100;
+    }
+    
+})
