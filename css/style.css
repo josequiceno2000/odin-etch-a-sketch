@@ -12,6 +12,10 @@ main {
     height: 100vh;
 }
 
+.hovered {
+    background-color: rgb(211, 255, 255) !important;
+}
+
 #container {
     display: flex;
     flex-wrap: wrap;

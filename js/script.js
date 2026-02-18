@@ -10,3 +10,10 @@ for (let i = 0; i < 16 ** 2; i++) {
     squareDiv.classList.add("squareDiv");
     container.appendChild(squareDiv);
 }
+
+container.addEventListener('mouseover', function(event) {
+    if (event.target.classList.contains("squareDiv")) {
+        event.target.classList.add("hovered");
+    }
+    
+});
