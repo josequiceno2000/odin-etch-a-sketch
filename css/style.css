@@ -13,7 +13,7 @@ main {
 }
 
 .hovered {
-    background-color: rgb(211, 255, 255) !important;
+    background-color: rgb(211, 255, 255);
 }
 
 #grid-size {

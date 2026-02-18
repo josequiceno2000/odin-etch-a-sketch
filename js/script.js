@@ -26,8 +26,9 @@ container.addEventListener('mouseover', function(event) {
         while (randomColor.length < 6) {
             randomColor = "0" + randomColor;
         }
+        randomColor = "#" + randomColor;
         console.log(randomColor);
-        event.target.backgroundColor = `${randomColor}`;
+        event.target.style.backgroundColor = `${randomColor}`;
     }
 });
 
